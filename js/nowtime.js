@@ -1,5 +1,6 @@
 //[ 追記 ]
 //phpのdate関数に変更したため不必要。
+/*
 function set2fig(num) {
     // 桁数が1桁だったら先頭に0を加えて2桁に調整する
     var ret;
@@ -16,6 +17,6 @@ function set2fig(num) {
     document.getElementById("RealtimeClockArea2").innerHTML = msg;
  }
  setInterval('showClock2()',1000);
- 
+ */
 //以下のサイトを参考にさせていただきました。
 //https://www.nishishi.com/javascript-tips/realtime-clock-setinterval.html

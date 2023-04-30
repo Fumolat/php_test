@@ -1,0 +1,158 @@
+<!doctype html>
+<!--
+
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+:::::::::::::..............:::.......::::::.......::::
+:::::::::::::..............:::.......::::::.......::::
+::::::=@@@@@@@@@*:::@@@=:::...@@@=::=@@@@@@@@@#...::::
+::::::=@@@@@@@@@*:::@@@=:::...@@@=::=@@@@@@@@@#...::::
+::::::::::@@@=::::::@@@@@@#:::@@@=::::::@@@=::::::::::
+::::::::::@@@=::::::@@@@@@#:::@@@=::::::@@@=::::::::::
+::::::::::@@@=::::::@@@=::=@@@@@@=::::::@@@=::::::::::
+::::::::::@@@=::::::@@@=::=@@@@@@=::::::@@@=::::::::::
+::::------@@@=:::---@@@=::::::@@@=::::::@@@+------::::
+:::-------@@@=:::---@@@=::::::@@@=::::::@@@+------::::
+------::::------::::----------::::------::::----------
+------::::------::::----------::::------::::----------
+**********###**********###***********###**********####
+**********###**********####*********####**********####
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+++++**********+++**********+++**********++++**********
+
+-->
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>様々な値の送信</title>
+  <link rel="stylesheet" href="css/st.css?v=2">
+  <link rel="stylesheet" type="text/css" href="css/st.css?v=2">
+
+  <!-- Bootstrap5.2.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <img src="img/test01.png" alt="" class="img-ma" width="100%"/>
+
+  <div class="container snt register">
+    <div class="row col-md-12 container-sm">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="home-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#login"
+            type="button"
+            role="tab"
+            aria-controls="login"
+            aria-selected="true"
+          >
+            アカウント作成
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#makeac"
+            type="button"
+            role="tab"
+            aria-controls="makeac"
+            aria-selected="false"
+          >
+            ログイン
+          </button>
+        </li>
+      </ul>
+
+      <div class="sp-1"></div>
+
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="login"
+          role="tabpanel"
+          aria-labelledby="login-tab"
+        >
+          <div class="cont">
+            <form method="post" action="sign.php">
+              <!-- アカウント作成 -->
+              <div class="mb-3">
+                <label for="Input1" class="form-label">ユーザーID</label>
+                <input type="text"  pattern="^[0-9a-zA-Z]+$" name="p01" required="required" id="Input1" placeholder="your id"><br>
+              </div>
+              <div class="mb-3">
+                <label for="Input2" class="form-label">パスワード</label>
+                <input type="password" name="p02" required="required" id="Input2" placeholder="password"><br>
+              </div>
+              <div class="mb-3">
+                <label for="Input3" class="form-label">メールアドレス</label>
+                <input type="email" name="p03" required="required" id="Input3" placeholder="name@example.com"><br>
+              </div>
+
+
+            <input type="submit" value="送信"><input type="reset" value="リセット">
+            </form>
+          </div>
+
+        </div>
+      <div
+        class="tab-pane fade"
+        id="makeac"
+        role="tabpanel"
+        aria-labelledby="makeac-tab"
+      >
+        <form method="post" action="login.php">
+          <!-- ログイン -->
+          ユーザーID：<input type="text" name="d01" required="required"><br>
+          パスワード：<input type="password" name="d02" required="required"><br>
+          <input type="submit" value="送信">
+        </form>
+
+      </div>
+    </div>
+  
+    <div class="sp-1"></div>
+
+
+    <!--
+    <h1>ヘルプフォーム</h1>
+		<form action="./help-form.php" method="post">
+      <p>受信者</p><input type="text" name="to" required="required">
+      <p>タイトル</p><input type="text" name="title" required="required">
+      <p>本文</p><textarea name="content" cols="50" rows="5" required="required"></textarea>
+      <p><input type="submit" name="send" value="送信"></p>
+    </form>
+    -->
+
+  </div>
+
+
+  <!-- フッターの表示 -->
+  <footer>
+  </footer>
+
+
+
+  <!-- JavaScriptのライブラリ（jQueryは基本ライブラリ+Bootstrap用のJavaScriptファイル） -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/nowtime.js"></script>
+
+</body>
+</html>

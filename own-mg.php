@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/st.css?v=2" >
 </head>
 <body>
-    <h1>ログイン</h1>
+    <h1>アカウント一覧</h1>
     
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,7 +34,6 @@
 
             if ($password == "{$_POST["d02"]}") {
                 echo "ログイン成功";
-                
             }
             else{
                 echo "パスワードが間違っています。";
@@ -52,4 +51,3 @@
 </body>
 <script src="js/nowtime.js"></script>
 </html>
-

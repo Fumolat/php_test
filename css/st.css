@@ -12,12 +12,20 @@ img{
 }
 .ft{
     text-align: center;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 10px;
 }
 .bi{
     color: rgb(85, 85, 85);
 }
+.cent{
+    text-align: center;
+}
 footer{
     left: 0;
+    right: 0;
     width: 100%;
     text-align: center;
     padding: 30px 0px;

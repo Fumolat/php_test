@@ -12,7 +12,7 @@
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 入力されたファイル名を取得
-        $filePath = "json/{$_POST["d01"]}";
+        $filePath = "user/{$_POST["d01"]}";
 
         // JSONファイルが存在する場合、ファイルを読み込む
         if (file_exists($filePath . ".json")) {
@@ -30,16 +30,26 @@
             $username = $data["username"];
             $username = json_decode('"' . $username . '"');
             $start_date = $data["start"];
-            echo $start_date;
+            $displayname = $data["displayname"];
+            $name = $data["name"];
+            $birth = $data["birth"];
 
-            if ($password == "{$_POST["d02"]}") {
-                echo "ログイン成功";
-                
+            $conveted_data = [$id, $password, $username, $start_date, $displayname, $name, $birth];
+
+            if ($id == "{$_POST["d01"]}"){
+                if ($password == "{$_POST["d02"]}") {
+                    echo "ログイン成功";
+                    echo $conveted_data;
+                    
+                }
+                else{
+                    echo "パスワードが間違っています。";
+                }
+
             }
             else{
-                echo "パスワードが間違っています。";
+                echo "IDが違います。";
             }
-
         } 
         else {
             echo "指定されたファイルが存在しません。";
@@ -50,6 +60,5 @@
 
 
 </body>
-<script src="js/nowtime.js"></script>
 </html>
 

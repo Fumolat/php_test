@@ -12,7 +12,7 @@
     <?php
     if (mkdir("user/{$_POST["p01"]}", 0700)){
         echo 'アカウントフォルダを作成しました。';
-        print '<a href="main.html">'. "トップに戻る" .'</a>';
+        print '<a href="index.html">'. "トップに戻る" .'</a>';
         
     }else{
         echo 'フォルダの作成が失敗しました。';
@@ -36,6 +36,5 @@
     ?>
 
 </body>
-<script src="js/nowtime.js"></script>
 </html>
 

@@ -49,5 +49,4 @@
 
 
 </body>
-<script src="js/nowtime.js"></script>
 </html>

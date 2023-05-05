@@ -10,40 +10,52 @@
     <h1>アカウント一覧</h1>
     
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // 入力されたファイル名を取得
-        $filePath = "json/{$_POST["d01"]}";
 
-        // JSONファイルが存在する場合、ファイルを読み込む
-        if (file_exists($filePath . ".json")) {
-            $json_content = file_get_contents($filePath . ".json");
+        function readAllFilesInFolder($folder) {
+            // フォルダ内のファイルとサブフォルダを再帰的に処理
+            $directoryIterator = new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS);
+            $iterator = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::SELF_FIRST);
+          
+            foreach ($iterator as $file) {
+              // ファイルであれば処理
+              if ($file->isFile()) {
+                // ファイルの拡張子が「.json」の場合のみ処理
+                if (strtolower(pathinfo($file->getFilename(), PATHINFO_EXTENSION)) === 'json') {
+                    // JSONファイルの内容を取得
+                    $jsonData = file_get_contents($file->getPathname());
+          
+                    // JSONデータをデコード
+                    $data = json_decode($jsonData, true);
 
-            // JSON文字列を配列に変換する
-            $data = json_decode($json_content, true);
+                    //jsonデータをキーに変換
+                    $key = array_keys($data);
 
-            //jsonデータをキーに変換
-            $key = array_keys($data);
+                    $id = $data["id"];
+                    $password = $data["password"];
+                    //Unicodeエスケープを直す。
+                    //$username = $data["username"];
+                    //$username = json_decode('"' . $username . '"');
+                    $start_date = $data["start"];
+                    $displayname = $data["displayname"];
+                    $name = $data["name"];
+                    $birth = $data["birth"];
 
-            $id = $data["id"];
-            $password = $data["password"];
-            //Unicodeエスケープを直す。
-            $username = $data["username"];
-            $username = json_decode('"' . $username . '"');
-            $start_date = $data["start"];
-            echo $start_date;
-
-            if ($password == "{$_POST["d02"]}") {
-                echo "ログイン成功";
+                    // デコードしたJSONデータを必要に応じて処理
+                    // 例：JSONデータを表示する
+                    var_dump($data);
+                }
+              }
             }
-            else{
-                echo "パスワードが間違っています。";
-            }
+          }
+          
+          // フォルダ階層のルートフォルダ
+          $rootFolder = 'user/';
+          
+          // ルートフォルダ内のすべてのファイルを処理
+          readAllFilesInFolder($rootFolder);
 
-        } 
-        else {
-            echo "指定されたファイルが存在しません。";
-        }
-        }
+
+
     ?>
 
 

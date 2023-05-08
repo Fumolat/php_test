@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>キーワードの受信</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/st.css?v=2" >
+    <link rel="stylesheet" href="css/st.css?v=2">
 </head>
 <body>
     <h1>アカウント一覧</h1>
@@ -28,21 +28,31 @@
                     $data = json_decode($jsonData, true);
 
                     //jsonデータをキーに変換
-                    $key = array_keys($data);
+                    //$key = array_keys($data);
 
-                    $id = $data["id"];
-                    $password = $data["password"];
+                    //$id = $data["id"];
+                    //$password = $data["password"];
                     //Unicodeエスケープを直す。
                     //$username = $data["username"];
                     //$username = json_decode('"' . $username . '"');
-                    $start_date = $data["start"];
-                    $displayname = $data["displayname"];
-                    $name = $data["name"];
-                    $birth = $data["birth"];
+                    //$start_date = $data["start"];
+                    //$displayname = $data["displayname"];
+                    //$name = $data["name"];
+                    //$birth = $data["birth"];
 
                     // デコードしたJSONデータを必要に応じて処理
                     // 例：JSONデータを表示する
-                    var_dump($data);
+                    //var_dump($data);
+
+                    echo '<ul>';
+                    foreach ($data as $jsonData) {
+                        echo '<li>';
+                        echo '<pre>' . print_r($data, true) . '</pre>';
+                        echo '</li>';
+                    }
+                    echo '</ul>';
+
+
                 }
               }
             }
@@ -55,6 +65,37 @@
           readAllFilesInFolder($rootFolder);
 
 
+
+    ?>
+    <?php
+      function readJsonFiles($folderPath) {
+        $fileList = glob($folderPath . '/*.json');
+        $jsonData = array();
+    
+        foreach ($fileList as $file) {
+            if (is_file($file)) {
+                $json = file_get_contents($file);
+                $data = json_decode($json, true);
+                if ($data) {
+                    $jsonData[] = $data;
+                }
+            }
+        }
+    
+        return $jsonData;
+      }
+    
+      $folderPath = 'user/'; // 対象のフォルダのパスを指定してください
+      $jsonData = readJsonFiles($folderPath);
+      
+      // リストとして表示
+      echo '<ul>';
+      foreach ($jsonData as $data) {
+          echo '<li>';
+          echo '<pre>' . print_r($data, true) . '</pre>';
+          echo '</li>';
+      }
+      echo '</ul>';
 
     ?>
 
